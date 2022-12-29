@@ -6,48 +6,43 @@
 
 <MudLayout>
     <MudAppBar Elevation="0">
-        <MudIconButton Icon="@Icons.Material.Filled.Home" Link="/" Color="Color.Inherit" Edge="Edge.Start" />
-        <MudButton Variant="Variant.Text" Link="/software-services" Color="Color.Warning">#Software services</MudButton>
-        <MudButton Variant="Variant.Text" Link="" Color="Color.Error">#Automation</MudButton>
-        <MudButton Variant="Variant.Text" Link="" Color="Color.Primary">#Smart home</MudButton>
-        <MudButton Variant="Variant.Text" Color="Color.Success">#Contact us</MudButton>
+        <MudHidden Breakpoint="Breakpoint.MdAndUp">
+            <MudIconButton OnClick="DrawerToggle" Icon="@Icons.Rounded.Notes" Color="Color.Inherit" Edge="Edge.Start" />
+            <div class="flex-grow-1"></div>
+            <NavLink ActiveClass="d-flex" href="/">
+                <MudImage Width="150" Src="images/stf-logo.svg" />
+            </NavLink>
+            <div class="flex-grow-1"></div>
+        </MudHidden>       
+        
+        <MudHidden Breakpoint="Breakpoint.MdAndUp" Invert="true">
+            <NavLink ActiveClass="d-flex me-4" href="/">
+                <MudImage Width="150" Src="images/stf-logo.svg" />
+            </NavLink>
+            <MudButton Variant="Variant.Text" Style="text-transform:none" Href="/software-services">Software services</MudButton>
+            <MudButton Variant="Variant.Text" Style="text-transform:none" Href="">Automation</MudButton>
+            <MudButton Variant="Variant.Text" Style="text-transform:none" Href="">Smart home</MudButton>
+            <MudButton Variant="Variant.Text" Style="text-transform:none" >Contact us</MudButton>
         
         <MudSpacer />
         <MudIconButton Icon="@Icons.Custom.Brands.MudBlazor" Color="Color.Inherit" Link="https://mudblazor.com/" Target="_blank" />
         <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" Link="https://github.com/MudBlazor/MudBlazor/" Target="_blank" />
+        </MudHidden>
+        
         
     </MudAppBar>
-    @*<MudDrawer @bind-Open="_drawerOpen" Elevation="1">
-        <MudDrawerHeader>
-            <MudText Typo="Typo.h6">SmallTaskForceWeb</MudText>
-        </MudDrawerHeader>
-        <NavMenu />
-    </MudDrawer>*@
+    <MudHidden Breakpoint="Breakpoint.MdAndUp">        
+        <MudDrawer @bind-Open="_drawerOpen" Elevation="1">
+            @*<MudDrawerHeader>
+                <MudText Typo="Typo.h6">SmallTaskForceWeb</MudText>
+            </MudDrawerHeader>*@
+            <NavMenu />
+        </MudDrawer>
+    </MudHidden>
+    
     <MudMainContent>
         <MudContainer MaxWidth="MaxWidth.Large" Class="my-16 pt-16">
             @Body
         </MudContainer>
     </MudMainContent>
 </MudLayout>
-
-@code {
-
-    private bool _isDarkMode;
-    private MudThemeProvider _mudThemeProvider;
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            _isDarkMode = await _mudThemeProvider.GetSystemPreference();
-            StateHasChanged();
-        }
-    }
-
-    bool _drawerOpen = true;
-
-    void DrawerToggle()
-    {
-        _drawerOpen = !_drawerOpen;
-    }    
-}
