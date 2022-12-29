@@ -1,0 +1,5 @@
+﻿.landing-h1-gradient {
+    background: linear-gradient(82deg,#594ae2 0%,#f69 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
