@@ -1,4 +1,5 @@
 ﻿@inherits LayoutComponentBase
+@inject IJSRuntime js
 
 <MudThemeProvider @bind-IsDarkMode="@_isDarkMode" Theme="_theme"/>
 <MudDialogProvider />
@@ -26,8 +27,8 @@
         
         <MudSpacer />
 
-        <MudTooltip Duration="1000" Text="Switch to Light Theme">
-                <MudSwitch @bind-Checked="@_isDarkMode" Color="Color.Primary" Class="ma-4" T="bool" Label="Toggle Light/Dark Mode" />
+            <MudTooltip Duration="1000" Text="@themModeText">
+                <MudSwitch CheckedChanged="@OnThemeModeChange" Color="Color.Primary" Class="ma-4" T="bool"/>
         </MudTooltip>
 
         <MudIconButton Icon="@Icons.Custom.Brands.MudBlazor" Color="Color.Inherit" Link="https://mudblazor.com/" Target="_blank" />
