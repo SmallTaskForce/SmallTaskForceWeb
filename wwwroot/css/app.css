@@ -1,4 +1,5 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
 .loading-progress {
     position: relative;
     display: block;
@@ -31,3 +32,10 @@
     .loading-progress-text:after {
         content: var(--blazor-load-percentage-text, "Loading");
     }
+
+:root {
+    --mud-palette-primary: #388CFF;
+    --mud-palette-primary-rgb: 56,140,255;
+    --mud-palette-primary-darken: rgb(55,122,239);
+    --mud-palette-primary-lighten: rgb(57,161,255);
+}
