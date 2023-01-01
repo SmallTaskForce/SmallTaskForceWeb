@@ -26,6 +26,7 @@ public partial class MainLayout
         _drawerOpen = !_drawerOpen;
     }
 
+    string _appBarBackgroundColorCSS = "background-color:#fff";
     string themModeText = "Switch to Dark Theme";
     async void OnThemeModeChange()
     {
@@ -33,12 +34,14 @@ public partial class MainLayout
         {
             _isDarkMode = false;
             themModeText = "Switch to Dark Theme";
+            _appBarBackgroundColorCSS = "background-color:#fff";
             StateHasChanged();
         }
         else if(!_isDarkMode)
         {
             _isDarkMode = true;
             themModeText = "Switch to Light Theme";
+            _appBarBackgroundColorCSS = "background-color:#27272fff";
             StateHasChanged();
         }
         

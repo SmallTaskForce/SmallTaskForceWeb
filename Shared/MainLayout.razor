@@ -1,12 +1,19 @@
 ﻿@inherits LayoutComponentBase
-@inject IJSRuntime js
 
 <MudThemeProvider @bind-IsDarkMode="@_isDarkMode" Theme="_theme"/>
 <MudDialogProvider />
 <MudSnackbarProvider />
+<style>
+    :root {
+        --mud-palette-primary: #388CFF;
+        --mud-palette-primary-rgb: 56,140,255;
+        --mud-palette-primary-darken: rgb(55,122,239);
+        --mud-palette-primary-lighten: rgb(57,161,255);
+    }
 
+</style>
 <MudLayout>
-    <MudAppBar Color="Color.Transparent">
+    <MudAppBar Style="@_appBarBackgroundColorCSS">
         <MudHidden Breakpoint="Breakpoint.MdAndUp">
             <MudIconButton OnClick="DrawerToggle" Icon="@Icons.Rounded.Notes" Color="Color.Inherit" Edge="Edge.Start" />
             <div class="flex-grow-1"></div>
