@@ -32,16 +32,12 @@ public partial class MainLayout
             if(status != null && status == "True")
             {
                 _isDarkMode = true;
-                themModeText = "Switch to Light Theme";
-                _appBarBackgroundColorCSS = "background-color:#27272fff";
-                StateHasChanged();
+                StateChanged();
             }
             else
             {
                 _isDarkMode = false;
-                themModeText = "Switch to Dark Theme";
-                _appBarBackgroundColorCSS = "background-color:#fff";
-                StateHasChanged();
+                StateChanged();
             }
         }
     }
@@ -53,24 +49,36 @@ public partial class MainLayout
         _drawerOpen = !_drawerOpen;
     }
 
-    string _appBarBackgroundColorCSS = "background-color:#fff";
+    string _appBarBackgroundColorCSS;
     string themModeText = "Switch to Dark Theme";
     async void OnThemeModeChange()
     {
         if(_isDarkMode)
         {
             _isDarkMode = false;
-            themModeText = "Switch to Dark Theme";
-            _appBarBackgroundColorCSS = "background-color:#fff";
-            StateHasChanged();
+            StateChanged();
         }
         else if(!_isDarkMode)
         {
             _isDarkMode = true;
+            StateChanged();
+        }
+        await LocalStorage.SetItemAsStringAsync("_isDarkMode", _isDarkMode.ToString());
+    }
+
+    void StateChanged()
+    {
+        if (_isDarkMode)
+        {   
             themModeText = "Switch to Light Theme";
             _appBarBackgroundColorCSS = "background-color:#27272fff";
             StateHasChanged();
         }
-        await LocalStorage.SetItemAsStringAsync("_isDarkMode", _isDarkMode.ToString());
+        else if (!_isDarkMode)
+        {
+            themModeText = "Switch to Dark Theme";
+            _appBarBackgroundColorCSS = "background-color:#fff";
+            StateHasChanged();
+        }
     }
 }
