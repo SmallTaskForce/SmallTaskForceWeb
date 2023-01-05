@@ -12,16 +12,16 @@ public partial class MainLayout
     private bool _isDarkMode;
     private MudThemeProvider _mudThemeProvider;
 
-    
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        // set them mode for system preference
+        if (firstRender && string.IsNullOrEmpty(LocalStorage.ContainKeyAsync("_isDarkMode").ToString()))
+        {
+            _isDarkMode = await _mudThemeProvider.GetSystemPreference();
+            StateChanged();
+        }
+    }
 
-    //protected override async Task OnAfterRenderAsync(bool firstRender)
-    //{
-    //    //if (firstRender)
-    //    //{
-    //    //    _isDarkMode = await _mudThemeProvider.GetSystemPreference();
-    //    //    StateHasChanged();
-    //    //}
-    //}
     [Inject]
     public ILocalStorageService LocalStorage { get; set; }
     protected override async Task OnInitializedAsync()
