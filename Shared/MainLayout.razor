@@ -1,9 +1,9 @@
 ﻿@inherits LayoutComponentBase
 
-<MudThemeProvider @bind-IsDarkMode="@_isDarkMode" Theme="_theme"/>
+<MudThemeProvider @bind-IsDarkMode="@_isDarkMode" Theme="MyCustomTheme" />
 <MudDialogProvider />
 <MudSnackbarProvider />
-<style>
+@*<style>
     :root {
         --mud-palette-primary: #388CFF;
         --mud-palette-primary-rgb: 56,140,255;
@@ -11,7 +11,7 @@
         --mud-palette-primary-lighten: rgb(57,161,255);
     }
 
-</style>
+</style>*@
 <MudLayout>
     <MudAppBar Style="@_appBarBackgroundColorCSS">
         <MudHidden Breakpoint="Breakpoint.MdAndUp">
@@ -34,8 +34,9 @@
         
         <MudSpacer />
 
-            <MudTooltip Duration="1000" Text="@themModeText">
-                <MudSwitch CheckedChanged="@OnThemeModeChange" Color="Color.Primary" Class="ma-4" T="bool"/>
+        <MudTooltip Duration="1000" Text="@themModeText">
+                <MudToggleIconButton ToggledChanged="@OnThemeModeChange" Icon="@Icons.Material.Filled.LightMode"
+                                     ToggledIcon="@Icons.Material.Filled.DarkMode"></MudToggleIconButton>
         </MudTooltip>       
         
         </MudHidden>
@@ -44,9 +45,10 @@
     </MudAppBar>
     <MudHidden Breakpoint="Breakpoint.MdAndUp">        
         <MudDrawer @bind-Open="_drawerOpen" Elevation="1">
-            @*<MudDrawerHeader>
-                <MudText Typo="Typo.h6">SmallTaskForceWeb</MudText>
-            </MudDrawerHeader>*@
+            <MudDrawerHeader>
+                <MudToggleIconButton ToggledChanged="@OnThemeModeChange" Icon="@Icons.Material.Filled.LightMode"
+                                     ToggledIcon="@Icons.Material.Filled.DarkMode"></MudToggleIconButton>
+            </MudDrawerHeader>
             <NavMenu />
         </MudDrawer>
     </MudHidden>

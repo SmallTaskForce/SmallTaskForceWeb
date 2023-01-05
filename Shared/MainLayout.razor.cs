@@ -10,6 +10,26 @@ public partial class MainLayout
     private bool _isDarkMode;
     private MudThemeProvider _mudThemeProvider;
 
+    MudTheme MyCustomTheme = new MudTheme()
+    {
+        Palette = new Palette()
+        {
+            Primary = Colors.Blue.Default,
+            Secondary = Colors.Green.Accent4,
+            AppbarBackground = Colors.Red.Default,
+        },
+        PaletteDark = new PaletteDark()
+        {
+            Primary = Colors.Blue.Lighten1
+        },
+
+        LayoutProperties = new LayoutProperties()
+        {
+            DrawerWidthLeft = "260px",
+            DrawerWidthRight = "300px"
+        }
+    };
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         //if (firstRender)
