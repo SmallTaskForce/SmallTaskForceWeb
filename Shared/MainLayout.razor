@@ -1,9 +1,9 @@
 ﻿@inherits LayoutComponentBase
 
-<MudThemeProvider @bind-IsDarkMode="@_isDarkMode" Theme="MyCustomTheme" />
+<MudThemeProvider @bind-IsDarkMode="@_isDarkMode" Theme="_theme" />
 <MudDialogProvider />
 <MudSnackbarProvider />
-@*<style>
+<style>
     :root {
         --mud-palette-primary: #388CFF;
         --mud-palette-primary-rgb: 56,140,255;
@@ -11,7 +11,7 @@
         --mud-palette-primary-lighten: rgb(57,161,255);
     }
 
-</style>*@
+</style>
 <MudLayout>
     <MudAppBar Style="@_appBarBackgroundColorCSS">
         <MudHidden Breakpoint="Breakpoint.MdAndUp">

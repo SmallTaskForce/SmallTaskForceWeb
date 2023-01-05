@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using MudBlazor;
+using System.Runtime.CompilerServices;
+using Blazored.LocalStorage;
 
 namespace SmallTaskForceWeb.Shared;
 
@@ -10,33 +12,38 @@ public partial class MainLayout
     private bool _isDarkMode;
     private MudThemeProvider _mudThemeProvider;
 
-    MudTheme MyCustomTheme = new MudTheme()
-    {
-        Palette = new Palette()
-        {
-            Primary = Colors.Blue.Default,
-            Secondary = Colors.Green.Accent4,
-            AppbarBackground = Colors.Red.Default,
-        },
-        PaletteDark = new PaletteDark()
-        {
-            Primary = Colors.Blue.Lighten1
-        },
+    
 
-        LayoutProperties = new LayoutProperties()
+    //protected override async Task OnAfterRenderAsync(bool firstRender)
+    //{
+    //    //if (firstRender)
+    //    //{
+    //    //    _isDarkMode = await _mudThemeProvider.GetSystemPreference();
+    //    //    StateHasChanged();
+    //    //}
+    //}
+    [Inject]
+    public ILocalStorageService LocalStorage { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        if (await LocalStorage.ContainKeyAsync("_isDarkMode"))
         {
-            DrawerWidthLeft = "260px",
-            DrawerWidthRight = "300px"
+            string status = await LocalStorage.GetItemAsStringAsync("_isDarkMode");
+            if(status != null && status == "True")
+            {
+                _isDarkMode = true;
+                themModeText = "Switch to Light Theme";
+                _appBarBackgroundColorCSS = "background-color:#27272fff";
+                StateHasChanged();
+            }
+            else
+            {
+                _isDarkMode = false;
+                themModeText = "Switch to Dark Theme";
+                _appBarBackgroundColorCSS = "background-color:#fff";
+                StateHasChanged();
+            }
         }
-    };
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        //if (firstRender)
-        //{
-        //    _isDarkMode = await _mudThemeProvider.GetSystemPreference();
-        //    StateHasChanged();
-        //}
     }
 
     bool _drawerOpen = true;
@@ -64,6 +71,6 @@ public partial class MainLayout
             _appBarBackgroundColorCSS = "background-color:#27272fff";
             StateHasChanged();
         }
-        
+        await LocalStorage.SetItemAsStringAsync("_isDarkMode", _isDarkMode.ToString());
     }
 }
