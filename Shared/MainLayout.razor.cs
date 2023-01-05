@@ -10,11 +10,11 @@ public partial class MainLayout
 {
     private MudTheme _theme = new();
     private bool _isDarkMode;
-    private MudThemeProvider _mudThemeProvider;
+    private MudThemeProvider? _mudThemeProvider;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        // set them mode for system preference
+        // set them mode from system preference
         if (firstRender && string.IsNullOrEmpty(LocalStorage.ContainKeyAsync("_isDarkMode").ToString()))
         {
             _isDarkMode = await _mudThemeProvider.GetSystemPreference();
@@ -49,7 +49,7 @@ public partial class MainLayout
         _drawerOpen = !_drawerOpen;
     }
 
-    string _appBarBackgroundColorCSS;
+    string? _appBarBackgroundColorCSS;
     string themModeText = "Switch to Dark Theme";
     async void OnThemeModeChange()
     {
