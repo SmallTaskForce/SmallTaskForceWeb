@@ -1,7 +1,7 @@
 ﻿self.assetsManifest = {
   "assets": [
     {
-      "hash": "sha256-mvm6T5qRxQrqr8o8uouKxX9ZxajJjG361ur8EIPDD4o=",
+      "hash": "sha256-Du6HaMUHnhNve2LKxSBd7I3RtDQBwUJcJ6U8AxkO8vA=",
       "url": "css\/app.css"
     },
     {
@@ -69,7 +69,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-6w1HBM8P2s4vwOZdxojAnrlHEecP\/3sCJiPQZInSvZo=",
+      "hash": "sha256-ZJ6Xy5UnHUGwHmiyUSeXdiKXmlxZ2ua\/q993e4koV6I=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -137,11 +137,11 @@
       "url": "_framework\/Microsoft.JSInterop.WebAssembly.dll"
     },
     {
-      "hash": "sha256-eAHvtY3e2LZY7uxWICu\/NkmJEaFm8TcIxYYyKX+Yc7Y=",
+      "hash": "sha256-iIki8OvnP\/wXet8bm\/h+n\/0QiVYpTyfgBq35Ew7WvhE=",
       "url": "_framework\/MudBlazor.dll"
     },
     {
-      "hash": "sha256-AVuJo\/GTbZF5ex6wLjy73HKNJ3e\/5YcWcA4D1ys7jD0=",
+      "hash": "sha256-AboJjR2PASWb8qyNjI9dab3naUN64EjrnXyexJrP9WY=",
       "url": "_framework\/SmallTaskForceWeb.dll"
     },
     {
@@ -249,5 +249,5 @@
       "url": "_content\/MudBlazor\/MudBlazor.min.js"
     }
   ],
-  "version": "44IyeYOd"
+  "version": "wYbNdiJ6"
 };
