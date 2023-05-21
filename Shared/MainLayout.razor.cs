@@ -8,9 +8,30 @@ namespace SmallTaskForceWeb.Shared;
 
 public partial class MainLayout
 {
-    private MudTheme _theme = new();
     private bool _isDarkMode;
     private MudThemeProvider? _mudThemeProvider;
+
+
+    // https://mudblazor.com/features/colors#material-colors-list-of-material-colors
+    MudTheme _theme = new MudTheme()
+    {
+        Palette = new Palette()
+        {
+            Primary = Colors.Blue.Default,
+            Secondary = Colors.Blue.Accent2,
+            AppbarBackground = Colors.Blue.Accent4,
+        },
+        PaletteDark = new PaletteDark()
+        {
+            Primary = Colors.Blue.Darken4,
+        },
+
+        //LayoutProperties = new LayoutProperties()
+        //{
+        //    DrawerWidthLeft = "260px",
+        //    DrawerWidthRight = "300px"
+        //}
+    };
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
