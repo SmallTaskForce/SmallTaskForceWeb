@@ -25,7 +25,7 @@
       "url": "images\/stf-logo.svg"
     },
     {
-      "hash": "sha256-hJmx\/9FKxPxF2F8nUuHUMZ4ny4p2k3yAzSq2alKRWa8=",
+      "hash": "sha256-\/TTkCshuRbJdX3RZ9g3NVdxh6GIpas7oRehTm3JVAwI=",
       "url": "index.html"
     },
     {
@@ -249,5 +249,5 @@
       "url": "_content\/MudBlazor\/MudBlazor.min.js"
     }
   ],
-  "version": "wYbNdiJ6"
+  "version": "6cIiLVq3"
 };
